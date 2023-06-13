@@ -14,4 +14,30 @@ public class Basket<T extends Fruit> {
         }
         return basketWeight;
     }
+
+    void add(Fruit fruit) {
+        basketContent.add((T) fruit);
+    }
+
+    Integer compare(Basket<T> basket2) {
+        Integer result = null;
+        Float thisBasketWeight = basketWeight;
+        Float otherBasketWeight = basket2.basketWeight;
+        if (thisBasketWeight > otherBasketWeight) {
+            result = 1;
+        } else if (thisBasketWeight < otherBasketWeight) {
+            result = -1;
+        } else if (thisBasketWeight == otherBasketWeight) {
+            result = 0;
+        }
+        return result;
+    }
+
+    void transfer(Basket<T> basket2) {
+        Iterator<T> thisBasketIterator = basketContent.iterator();
+        while (thisBasketIterator.hasNext()) {
+            basket2.add(basketContent.iterator().next());
+            basketContent.remove(basketContent.iterator().next());
+        }
+    }
 }
