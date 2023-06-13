@@ -1,8 +1,7 @@
 public class Orange extends Fruit {
 
-    private Number weight = 1.5;
-
-    public Number getFruitWeight() {
-        return weight;
+    public Orange(Float weight) {
+        super(weight);
+        weight = 1.5f;
     }
 }
