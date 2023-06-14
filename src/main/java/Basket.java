@@ -12,6 +12,7 @@ public class Basket<T extends Fruit> {
         while (iterator.hasNext()) {
             basketWeight = basketWeight + basketContent.iterator().next().getWeight();
         }
+        System.out.println("Вес корзины равен " + basketWeight);
         return basketWeight;
     }
 
