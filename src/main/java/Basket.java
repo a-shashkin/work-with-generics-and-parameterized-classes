@@ -16,6 +16,7 @@ public class Basket<T extends Fruit> {
         return basketWeight;
     }
 
+    @SuppressWarnings("unchecked")
     void add(Fruit fruit) {
         basketContent.add((T) fruit);
     }
@@ -28,7 +29,7 @@ public class Basket<T extends Fruit> {
             result = 1;
         } else if (thisBasketWeight < otherBasketWeight) {
             result = -1;
-        } else if (thisBasketWeight == otherBasketWeight) {
+        } else if (thisBasketWeight.equals(otherBasketWeight)) {
             result = 0;
         }
         return result;

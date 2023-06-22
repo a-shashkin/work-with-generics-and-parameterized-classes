@@ -5,6 +5,8 @@ public class Main {
         Basket<Orange> orangeBasket = new Basket<>();
         Basket<Fruit> generalBasket = new Basket<>();
 
+        Apple testApple = new Apple(Apple.getWeight());
+
         appleBasket.add(new Apple(Apple.getWeight()));
         appleBasket.add(new Apple(Apple.getWeight()));
         appleBasket.add(new Apple(Apple.getWeight()));
