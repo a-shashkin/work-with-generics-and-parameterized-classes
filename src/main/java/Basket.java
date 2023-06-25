@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Basket<T extends Fruit> {
@@ -24,24 +23,25 @@ public class Basket<T extends Fruit> {
     }
 
     public Integer compare(Basket<?> comparedBasket) {
+        System.out.println("Идёт сравнение корзин...");
         Integer result = null;
         double thisBasketWeight = getBasketWeight();
         double otherBasketWeight = comparedBasket.getBasketWeight();
         if (thisBasketWeight > otherBasketWeight) {
             result = 1;
+            System.out.println("Первая корзина тяжелее второй.");
         } else if (thisBasketWeight < otherBasketWeight) {
             result = -1;
+            System.out.println("Вторая корзина тяжелее первой.");
         } else if (thisBasketWeight == otherBasketWeight) {
             result = 0;
+            System.out.println("Вес корзин одинаков.");
         }
         return result;
     }
 
-    void transfer(Basket<T> recipientBasket) {
-        Iterator<T> thisBasketIterator = basketContent.iterator();
-        while (thisBasketIterator.hasNext()) {
-            recipientBasket.add(basketContent.iterator().next());
-            basketContent.remove(basketContent.iterator().next());
-        }
+    public static <U extends Fruit> void transfer(Basket<U> sourceBasket, Basket<? super U> recipientBasket) {
+        recipientBasket.basketContent.addAll(sourceBasket.basketContent);
+        sourceBasket.basketContent.clear();
     }
 }
