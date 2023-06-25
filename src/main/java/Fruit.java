@@ -1,15 +1,15 @@
 public class Fruit {
-    protected Double weight;
+    protected double weight;
 
-    public Fruit(Double weight) {
+    public Fruit(double weight) {
         this.weight = weight;
     }
 
-    public Double getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }

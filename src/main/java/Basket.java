@@ -1,20 +1,19 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Basket<T extends Fruit> {
 
-    ArrayList<T> basketContent;
-    Double basketWeight;
+    private List<T> basketContent;
 
     public Basket() {
         basketContent = new ArrayList<>();
-        basketWeight = 0.0;
     }
 
-    public Double getBasketWeight() {
-        basketWeight = 0.0;
+    public double getBasketWeight() {
+        double basketWeight = 0.0;
         for (T fruit : basketContent) {
-            basketWeight += basketWeight + fruit.getWeight();
+            basketWeight += fruit.getWeight();
         }
         System.out.println("Вес корзины равен " + basketWeight);
         return basketWeight;
@@ -26,13 +25,13 @@ public class Basket<T extends Fruit> {
 
     public Integer compare(Basket<?> comparedBasket) {
         Integer result = null;
-        Double thisBasketWeight = basketWeight;
-        Double otherBasketWeight = comparedBasket.basketWeight;
+        double thisBasketWeight = getBasketWeight();
+        double otherBasketWeight = comparedBasket.getBasketWeight();
         if (thisBasketWeight > otherBasketWeight) {
             result = 1;
         } else if (thisBasketWeight < otherBasketWeight) {
             result = -1;
-        } else if (thisBasketWeight.equals(otherBasketWeight)) {
+        } else if (thisBasketWeight == otherBasketWeight) {
             result = 0;
         }
         return result;
