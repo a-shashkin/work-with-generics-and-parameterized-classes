@@ -5,28 +5,6 @@ public class Main {
         Basket<Orange> orangeBasket = new Basket<>();
         Basket<Fruit> generalBasket = new Basket<>();
 
-        Apple testApple = new Apple(Apple.getWeight());
 
-        appleBasket.add(new Apple(Apple.getWeight()));
-        appleBasket.add(new Apple(Apple.getWeight()));
-        appleBasket.add(new Apple(Apple.getWeight()));
-        appleBasket.add(new Apple(Apple.getWeight()));
-        appleBasket.getWeight(appleBasket.basketContent);
-
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.getWeight(orangeBasket.basketContent);
-
-        generalBasket.add(new Apple(Apple.getWeight()));
-        generalBasket.add(new Apple(Apple.getWeight()));
-        generalBasket.add(new Apple(Apple.getWeight()));
-        generalBasket.add(new Apple(Apple.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.add(new Orange(Orange.getWeight()));
-        orangeBasket.getWeight(orangeBasket.basketContent);
     }
 }

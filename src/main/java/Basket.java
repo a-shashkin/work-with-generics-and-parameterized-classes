@@ -3,28 +3,31 @@ import java.util.Iterator;
 
 public class Basket<T extends Fruit> {
 
-    ArrayList<T> basketContent = new ArrayList<>();
-    Float basketWeight = 0.0f;
+    ArrayList<T> basketContent;
+    Double basketWeight;
 
-    Float getWeight(ArrayList<T> basketContent) {
+    public Basket() {
+        basketContent = new ArrayList<>();
+        basketWeight = 0.0;
+    }
 
-        Iterator<T> iterator = basketContent.iterator();
-        while (iterator.hasNext()) {
-            basketWeight = basketWeight + basketContent.iterator().next().getWeight();
+    public Double getBasketWeight() {
+        basketWeight = 0.0;
+        for (T fruit : basketContent) {
+            basketWeight += basketWeight + fruit.getWeight();
         }
         System.out.println("Вес корзины равен " + basketWeight);
         return basketWeight;
     }
 
-    @SuppressWarnings("unchecked")
-    void add(Fruit fruit) {
-        basketContent.add((T) fruit);
+    public void add(T fruit) {
+        basketContent.add(fruit);
     }
 
-    Integer compare(Basket<T> basket2) {
+    public Integer compare(Basket<?> comparedBasket) {
         Integer result = null;
-        Float thisBasketWeight = basketWeight;
-        Float otherBasketWeight = basket2.basketWeight;
+        Double thisBasketWeight = basketWeight;
+        Double otherBasketWeight = comparedBasket.basketWeight;
         if (thisBasketWeight > otherBasketWeight) {
             result = 1;
         } else if (thisBasketWeight < otherBasketWeight) {
@@ -35,10 +38,10 @@ public class Basket<T extends Fruit> {
         return result;
     }
 
-    void transfer(Basket<T> basket2) {
+    void transfer(Basket<T> recipientBasket) {
         Iterator<T> thisBasketIterator = basketContent.iterator();
         while (thisBasketIterator.hasNext()) {
-            basket2.add(basketContent.iterator().next());
+            recipientBasket.add(basketContent.iterator().next());
             basketContent.remove(basketContent.iterator().next());
         }
     }
