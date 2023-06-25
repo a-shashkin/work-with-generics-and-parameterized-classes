@@ -1,15 +1,15 @@
 public class Fruit {
-    private static Float weight;
+    protected double weight;
 
-    public Fruit(Float weight) {
+    public Fruit(double weight) {
         this.weight = weight;
     }
 
-    public static Float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Float weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }

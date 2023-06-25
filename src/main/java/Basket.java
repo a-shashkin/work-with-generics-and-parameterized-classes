@@ -1,44 +1,47 @@
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class Basket<T extends Fruit> {
 
-    ArrayList<T> basketContent = new ArrayList<>();
-    Float basketWeight = 0.0f;
+    private List<T> basketContent;
 
-    Float getWeight(ArrayList<T> basketContent) {
+    public Basket() {
+        basketContent = new ArrayList<>();
+    }
 
-        Iterator<T> iterator = basketContent.iterator();
-        while (iterator.hasNext()) {
-            basketWeight = basketWeight + basketContent.iterator().next().getWeight();
+    public double getBasketWeight() {
+        double basketWeight = 0.0;
+        for (T fruit : basketContent) {
+            basketWeight += fruit.getWeight();
         }
         System.out.println("Вес корзины равен " + basketWeight);
         return basketWeight;
     }
 
-    void add(Fruit fruit) {
-        basketContent.add((T) fruit);
+    public void add(T fruit) {
+        basketContent.add(fruit);
     }
 
-    Integer compare(Basket<T> basket2) {
+    public Integer compare(Basket<?> comparedBasket) {
+        System.out.println("Идёт сравнение корзин...");
         Integer result = null;
-        Float thisBasketWeight = basketWeight;
-        Float otherBasketWeight = basket2.basketWeight;
+        double thisBasketWeight = getBasketWeight();
+        double otherBasketWeight = comparedBasket.getBasketWeight();
         if (thisBasketWeight > otherBasketWeight) {
             result = 1;
+            System.out.println("Первая корзина тяжелее второй.");
         } else if (thisBasketWeight < otherBasketWeight) {
             result = -1;
+            System.out.println("Вторая корзина тяжелее первой.");
         } else if (thisBasketWeight == otherBasketWeight) {
             result = 0;
+            System.out.println("Вес корзин одинаков.");
         }
         return result;
     }
 
-    void transfer(Basket<T> basket2) {
-        Iterator<T> thisBasketIterator = basketContent.iterator();
-        while (thisBasketIterator.hasNext()) {
-            basket2.add(basketContent.iterator().next());
-            basketContent.remove(basketContent.iterator().next());
-        }
+    public static <U extends Fruit> void transfer(Basket<U> sourceBasket, Basket<? super U> recipientBasket) {
+        recipientBasket.basketContent.addAll(sourceBasket.basketContent);
+        sourceBasket.basketContent.clear();
     }
 }
